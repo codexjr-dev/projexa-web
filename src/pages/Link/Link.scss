@@ -1,0 +1,47 @@
+.el-card {
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+ 
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+}
+ 
+.actions-button {
+    width: 45px;
+    height: 40px;
+    background: #e6e6e6;
+    font-size: 70%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 4px;
+    padding: auto;
+}
+ 
+.actions-button:hover {
+    cursor: pointer;
+}
+ 
+.el-icon {
+    width: 35%;
+    height: 30%;
+ 
+    svg {
+       height: 3em;
+       width: 3em;
+       color: white;
+       margin: 0;
+    }
+}
+ 
+span {
+    color: #808080;
+    margin: 0;
+}
