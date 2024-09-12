@@ -4,6 +4,8 @@ div
       el-table(
          :data="dados"
          stripe
+         style="width: 100%"
+         :table-layout="auto"
       )
          el-table-column(
             prop="name",
