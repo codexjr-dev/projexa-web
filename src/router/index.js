@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../pages/Home.vue'
-import Cadastro from '../pages/Cadastro.vue'
+import Cadastro from '../pages/Cadastro/Cadastro.vue'
 import Login from '../pages/Login.vue'
 import Member from '../pages/Member.vue'
 import ProjectList from '../pages/ProjectList.vue'
 import Project from '../pages/Project/Project.vue'
 import AllNews from '../pages/AllNews/AllNews.vue'
 import ViewNews from '../pages/ViewNews/ViewNews.vue'
-import Link from '../pages/Link.vue'
+import Link from '../pages/Link/Link.vue'
 import Settings from '../pages/Settings.vue'
 
 const isUsuarioAutenticado = () => {
