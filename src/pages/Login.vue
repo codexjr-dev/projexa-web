@@ -3,11 +3,11 @@ div.login-page
    div.login-form
       span.page-title Entre na sua conta
       el-input(
-         placeholder="email"
+         placeholder="Email"
          v-model="dados.email"
       )
       el-input(
-         placeholder="senha"
+         placeholder="Senha"
          v-model="dados.password"
          show-password
       )
