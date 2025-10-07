@@ -1,27 +1,29 @@
-import axios from 'axios'
+import axios from "axios";
 
 const Axios = axios.create({
-    baseURL: import.meta.env.DEV ? import.meta.env.VITE_API_BASE_URL_DEV : import.meta.env.VITE_API_BASE_URL_PROD,
-    headers: {
-        "Content-type": "application/json"
-    },
-    // withCredentials: true
+  baseURL: import.meta.env.DEV
+    ? import.meta.env.VITE_API_BASE_URL_DEV
+    : import.meta.env.VITE_API_BASE_URL_PROD,
+  headers: {
+    "Content-type": "application/json",
+  },
+  // withCredentials: true
 });
 
 Axios.interceptors.request.use(
-    (config) => {
-        let token = localStorage.getItem('@jwt');
+  (config) => {
+    let token = localStorage.getItem("@jwt");
 
-        if (token) {
-            config.headers['Authorization'] = `Bearer ${token}`;
-        }
-
-        return config;
-    },
-
-    (error) => {
-        return Promise.reject(error);
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
     }
+
+    return config;
+  },
+
+  (error) => {
+    return Promise.reject(error);
+  }
 );
 
 // Api.interceptors.response.use(

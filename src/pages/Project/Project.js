@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { mapActions } from 'vuex'
 import Utils from '@/utils/utils'
 import { ElNotification, ElMessageBox } from 'element-plus'
