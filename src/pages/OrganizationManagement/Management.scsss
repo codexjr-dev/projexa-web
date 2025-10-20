@@ -1,0 +1,24 @@
+.cadastro-page {
+    background: #e6e6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+ 
+    .cadastro-form {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       width: 30vw;
+       padding: 33px;
+       gap: 4vh;
+       border: 2px solid #808080;
+       border-radius: 20px;
+       height: 70vh;
+       justify-content: center;
+ 
+       .el-button {
+          width: 50%;
+       }
+    }
+ }
