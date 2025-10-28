@@ -89,7 +89,7 @@ import scriptModule from './AllNews.js';
 export default {
    name: scriptModule.name,
    components: scriptModule.components,
-   mounted: scriptModule.mounted,
+   mounted: scriptModule.mounted, 
    data: scriptModule.data,
    computed: scriptModule.computed,
    methods: scriptModule.methods
