@@ -9,7 +9,7 @@
 
         <div class="content">
             <div class="col">
-                <p class="baseText colTitle">Projeto</p>                   
+                <p class="baseText colTitle">Projeto</p>
                 <el-card class="externCol">
                     <p class="baseText rowTitle">Descrição</p>
                     <el-card class="projInfo">
@@ -24,7 +24,7 @@
                     <el-card class="projInfo">
                         <div class="lineFormat">
                             <el-text class="baseText dateText">Data de início:</el-text>
-                            <el-text class="baseText dateFormat"> 
+                            <el-text class="baseText dateFormat">
                                     {{ formatDate(project.startDate) }}
                             </el-text>
                         </div>
@@ -61,11 +61,11 @@
                                 </el-row>
                                 <div style="display: relative;">
                                     <el-text class="baseText memberName"> {{ member.name }} </el-text>
-                                    
+
                                     <!-- Código para pegar a função do membro naquele projeto e atribuir
                                     como uma tag (ainda não há como selecionar a função de um membro em um
-                                    determinado projeto) 
-                                    
+                                    determinado projeto)
+
                                     Obs: Deve ser criado um style css com o nome da função para poder atribuir
                                     a cor de fundo da tag -->
                                     <el-scrollbar style="margin-top: 2%; margin-left: 3%; height: 35px;">
@@ -141,5 +141,5 @@
 </script>
 
 <style lang="scss" scoped>
-    @import './Project.scss';
+    @use './Project.scss';
 </style>

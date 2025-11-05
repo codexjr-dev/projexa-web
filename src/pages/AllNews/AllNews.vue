@@ -97,6 +97,6 @@ export default {
 </script>
       
 <style lang="scss" scoped>
-@import './AllNews.scss';
+@use './AllNews.scss';
 </style>
       

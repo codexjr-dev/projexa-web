@@ -9,7 +9,7 @@
         <div class="body-text">
         <div>
           <h1>
-            Bem-vindo, 
+            Bem-vindo,
             <br>
             empresário júnior
           </h1>
@@ -61,5 +61,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./Home.scss";
+@use "./Home.scss";
 </style>

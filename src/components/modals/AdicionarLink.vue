@@ -1,7 +1,7 @@
 <template lang="pug">
 div.modal-content
   div.col
-    
+
     el-divider(
       content-position="left"
     ) <label className="required"> Nome </label>
@@ -15,7 +15,7 @@ div.modal-content
     el-text.verify(
       v-if="this.errorMessages['linkName']"
     ) {{ this.errorMessages['linkName'] }}
-    
+
     el-divider(
       content-position="left"
     ) <label className="required"> URL </label>
@@ -29,7 +29,7 @@ div.modal-content
     el-text.verify(
       v-if="this.errorMessages['linkUrl']"
     ) {{ this.errorMessages['linkUrl'] }}
-    
+
     el-divider(
       content-position="left"
     ) <label className="required"> Tags </label>
@@ -50,7 +50,7 @@ div.modal-content
 				:key="tag.id",
 				:label="tag.value",
 				:value="tag.value",
-      )  
+      )
     el-text.verify(
       v-if="this.errorMessages['linkTags']"
     ) {{ this.errorMessages['linkTags'] }}
