@@ -87,31 +87,27 @@ export default {
   components: { ...scriptModule.components, OrganizationChart },
   
   data() {
-
-    const valorEmCaixa = [1000, 2000, 3000, 3900, 4600, 5000, 5000, 5700, 6200, 5500, 6100, 5900];
-    const despesas = [2000, 2500, 2300, 3000, 2900, 3400, 3400, 3200, 3200, 4100, 3700, 4000];
-    const entradas = [3000, 3500, 3200, 4000, 3600, 3800, 3400, 3900, 3700, 3400, 4300, 3800]
     return {
       ...scriptModule.data(),
       chartLabels: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
       chartDatasets: [
         {
           label: 'Valor em caixa',
-          data: valorEmCaixa,
+          data: scriptModule.data().valorEmCaixa,
         borderColor: '#4B53C6',
         backgroundColor: 'rgba(75,83,198,0.2)',
         tension: 0.3 
         },
         {
         label: 'Despesas',
-        data: despesas,
+        data: scriptModule.data().despesas,
         borderColor: '#d12a2aff',
         backgroundColor: 'rgba(248,152,152,0.2)',
         tension: 0.3
       },
       {
         label: 'Entrada',
-        data: entradas,
+        data: scriptModule.data().entradas,
         borderColor: '#137267ff',
         backgroundColor: 'rgba(117,212,201,0.2)',
         tension: 0.3
