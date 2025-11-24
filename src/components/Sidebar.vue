@@ -35,6 +35,12 @@ div.sidebar
       title="Atualizações"
       aria-label="Atualizações"
    )
+   div.sidebar-button(
+      :style="isForm ? 'background: #4b53c6' : 'background: #e6e6e6'"
+      @click="handleOption('management')"
+      title="Formulários"
+      aria-label="Formulários"
+   )
       el-icon
          list(:style="isAllNews ? 'color: white' : 'color: #808080'")
       span(v-if="!isAllNews") Atualizações
