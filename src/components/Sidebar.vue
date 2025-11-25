@@ -35,15 +35,18 @@ div.sidebar
       title="Atualizações"
       aria-label="Atualizações"
    )
+      el-icon
+         list(:style="isAllNews ? 'color: white' : 'color: #808080'")
+      span(v-if="!isAllNews") Atualizações
    div.sidebar-button(
       :style="isForm ? 'background: #4b53c6' : 'background: #e6e6e6'"
-      @click="handleOption('management')"
+      @click="handleOption('forms')"
       title="Formulários"
       aria-label="Formulários"
    )
       el-icon
-         list(:style="isAllNews ? 'color: white' : 'color: #808080'")
-      span(v-if="!isAllNews") Atualizações
+         document(:style="isForm ? 'color: white' : 'color: #808080'")
+      span(v-if="!isForm") Formulários
    div.sidebar-button(
       v-if="isLeadership"
       :style="isSettings ? 'background: #4b53c6' : 'background: #e6e6e6'"
@@ -93,6 +96,9 @@ export default {
       isAllNews() {
          return this.$store.state.page.context === 'allnews'
       },
+      isForm() {
+         return this.$store.state.page.context === 'management'
+      },
       isLeadership() {
          return ['Presidente', 'Diretor(a)', "Guardiã(o)"].includes(localStorage.getItem("@role"))
       }
@@ -109,16 +115,19 @@ export default {
 
       handleOption(context) {
          this.$store.commit('SET_PAGE_CONTEXT', context);
-         if (this.isMember) {
-            this.$router.push({ name: 'Member' })
-         } else if (this.isProject) {
-            this.$router.push({ name: 'ProjectList' })
-         } else if (this.isLink) {
-            this.$router.push({ name: 'Link' })
-         } else if (this.isSettings) {
-            this.$router.push({ name: 'Settings' })
-         } else if (this.isAllNews) {
-            this.$router.push({ name: 'AllNews' })
+         
+         const routes = {
+            member: 'Member',
+            project: 'ProjectList',
+            link: 'Link',
+            settings: 'Settings',
+            allnews: 'AllNews',
+            form: 'Management',
+            forms: 'Management' // Adicione a rota correspondente aqui
+         };
+         
+         if (routes[context]) {
+            this.$router.push({ name: routes[context] });
          }
       },
 
