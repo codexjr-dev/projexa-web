@@ -2,38 +2,70 @@
 div.cadastro-page
    div.cadastro-form
       span.page-title Formulário Semanal
-      el-date-picker(
-         placeholder="Data do Sábado"
-         v-model="cadastroData.semana"
-      )
-      el-input(
-         placeholder="Segunda"
-         v-model="cadastroData.segunda"
-      )
-      el-input(
-         placeholder="Terça"
-         v-model="cadastroData.terca"
-      )
-      el-input(
-         placeholder="Quarta"
-         v-model="cadastroData.quarta"
-      )
-      el-input(
-         placeholder="Quinta"
-         v-model="cadastroData.quinta"
-      )
-      el-input(
-         placeholder="Sexta"
-         v-model="cadastroData.sexta"
-      )
-      el-input(
-         placeholder="Sabado"
-         v-model="cadastroData.sabado"
-      )
-      el-input(
-         placeholder="Domingo"
-         v-model="cadastroData.domingo"
-      )
+      
+      div.input-group
+         span.input-label Data do Sábado
+         el-date-picker(
+            v-model="cadastroData.semana"
+            style="width: 100%"
+         )
+      
+      div.input-group
+         span.input-label Segunda
+         el-input(
+            type="textarea"
+            :rows="2"
+            v-model="cadastroData.segunda"
+         )
+      
+      div.input-group
+         span.input-label Terça
+         el-input(
+            type="textarea"
+            :rows="2"
+            v-model="cadastroData.terca"
+         )
+      
+      div.input-group
+         span.input-label Quarta
+         el-input(
+            type="textarea"
+            :rows="2"
+            v-model="cadastroData.quarta"
+         )
+      
+      div.input-group
+         span.input-label Quinta
+         el-input(
+            type="textarea"
+            :rows="2"
+            v-model="cadastroData.quinta"
+         )
+      
+      div.input-group
+         span.input-label Sexta
+         el-input(
+            type="textarea"
+            :rows="2"
+            v-model="cadastroData.sexta"
+         )
+      
+      div.input-group
+         span.input-label Sábado
+         el-input(
+            type="textarea"
+            :rows="2"
+            v-model="cadastroData.sabado"
+         )
+      
+      div.input-group
+         span.input-label Domingo
+         el-input(
+            type="textarea"
+            :rows="2"
+            v-model="cadastroData.domingo"
+         )
+      
       el-button(
          type="primary"
          round
