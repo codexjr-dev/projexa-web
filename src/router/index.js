@@ -9,7 +9,7 @@ import AllNews from '../pages/AllNews/AllNews.vue'
 import ViewNews from '../pages/ViewNews/ViewNews.vue'
 import Link from '../pages/Link/Link.vue'
 import Settings from '../pages/Settings.vue'
-import Management from '../pages/OrganizationManagement/Management.vue'
+import Management from '../pages/PeopleManagement/Management.vue'
 
 const isUsuarioAutenticado = () => {
     return !!localStorage.getItem('@jwt')
@@ -48,7 +48,7 @@ const routes = [
         path: '/projetos',
         component: ProjectList,
         meta: {
-            requiresAuth: true
+            requiresAuth: false
         }
     },
     {
