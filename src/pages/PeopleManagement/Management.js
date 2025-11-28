@@ -24,7 +24,7 @@ export default {
    },
 
    mounted() {
-      this.$store.commit('SHOW_SIDEBAR', false);
+      this.$store.commit('SHOW_SIDEBAR', true);
    },
 
    methods: {
