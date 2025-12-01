@@ -1,9 +1,8 @@
 {
   "name": "tcc-front",
   "version": "0.0.0",
-
   "scripts": {
-    "dev": "VUE_ENV=dev vite",
+    "dev": "cross-env VUE_ENV=dev vite",
     "postinstall": "npm run build",
     "start": "VUE_ENV=prod node server.js",
     "build": "vite build",
@@ -15,7 +14,6 @@
     "dev:w": "set VUE_ENV=dev && vite",
     "start:w": "set VUE_ENV=prod && node server.js"
   },
-
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
     "axios": "^0.27.2",
@@ -37,6 +35,7 @@
     "@vitejs/plugin-vue": "^2.3.1",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/test-utils": "^2.0.0-rc.20",
+    "cross-env": "^10.1.0",
     "cypress": "^9.5.4",
     "eslint": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",

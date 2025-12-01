@@ -36,7 +36,7 @@ div.cadastro-page
 </template>
 
 <script>
-    import scriptModule from './Cadastro.js'
+    import scriptModule from '../Cadastro/Cadastro.js'
 
     export default{
         name: scriptModule.name,
@@ -49,5 +49,5 @@ div.cadastro-page
 </script>
 
 <style lang="scss" scoped>
-    @import './Cadastro.scss';
+    @import '../Cadastro/Cadastro.scss';
 </style>

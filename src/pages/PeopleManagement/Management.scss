@@ -1,5 +1,4 @@
 .cadastro-page {
-    background: #e6e6e6;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,7 +35,8 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 8px;
+            margin-bottom: 20px;
 
             .input-label {
                 font-weight: bold;
@@ -58,12 +58,15 @@
         }
 
         .el-date-picker {
-            width: 100%;
+            
             
             ::v-deep .el-input__inner {
                 height: 38px;
                 padding: 0 10px;
             }
+            
+            
+            padding-bottom: 100px;
         }
     }
 }
