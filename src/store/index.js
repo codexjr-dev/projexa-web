@@ -29,23 +29,23 @@ const store = createStore({
 
   mutations: {
       SET_PAGE_CONTEXT(state, context) {
-         state.page.context = context
+        state.page.context = context
       },
 
       SET_AND_SHOW_MODAL_CONTEXT(state, context) {
-         state.page.modalContext = context
+        state.page.modalContext = context
       },
 
       SHOW_SIDEBAR(state, showSidebar) {
-         state.page.sidebar.show = showSidebar
+        state.page.sidebar.show = showSidebar
       },
 
       SET_HEADER_TITLE(state, title) {
-         state.page.header.title = title
+        state.page.header.title = title
       },
-      
+
       SET_HEADER_BUTTON_VISIBILITY(state, visibility) {
-         state.page.header.buttonVisibility = visibility
+        state.page.header.buttonVisibility = visibility
       },
   },
 

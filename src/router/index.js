@@ -59,20 +59,20 @@ const routes = [
         }
     },
     {
-      name: 'AllNews',
-      path: '/allnews',
-      component: AllNews,
-      meta: {
-          requiresAuth: true
-      }
+        name: 'AllNews',
+        path: '/allnews',
+        component: AllNews,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
-      name: 'ViewNews',
-      path: '/project/:projectId/news',
-      component: ViewNews,
-      meta: {
-          requiresAuth: true
-      }
+        name: 'ViewNews',
+        path: '/project/:projectId/news',
+        component: ViewNews,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         name: 'Link',

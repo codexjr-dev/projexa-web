@@ -6,7 +6,7 @@ export default {
     },
 
     methods: {
-      cadastrarEj() {
+      cadastrarOrganization() {
         this.$router.push({ name: 'Cadastro' })
       },
       entrar() {

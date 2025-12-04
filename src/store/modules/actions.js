@@ -1,4 +1,4 @@
-import ej from './ej'
+import organization from './organization'
 import auth from './auth'
 import member from './member'
 import project from './project'
@@ -7,7 +7,7 @@ import user from './user'
 import news from './news'
 
 const actions = {
-    ...ej.actions,
+    ...organization.actions,
     ...auth.actions,
     ...member.actions,
     ...project.actions,

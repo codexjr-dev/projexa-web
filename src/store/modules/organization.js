@@ -1,13 +1,13 @@
 import axios from '@/utils/axios'
 
 const actions = {
-    async createEj({ commit }, dados) {
+    async createOrganization({ commit }, dados) {
         const data = await axios({
             method: 'POST',
             data: dados,
-            url: 'ej'
+            url: 'organization'
         })
-        return data
+        return data;
     }
 }
 

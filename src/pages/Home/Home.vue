@@ -35,14 +35,14 @@
             <div class="input-box">
               <input requerid type="password" placeholder="Digite a senha">
             </div>
-            <button class="button-input">Entrar</button>
+            <button class="button-input" @click="entrar">Entrar</button>
           </form>
         </div>
         <div class="register">
           <div class="">
             <span>Ainda não é cadastrado?</span>
           </div>
-            <button class="button-register">Cadastrar EJ</button>
+            <button class="button-register" @click="cadastrarOrganization">Cadastrar EJ</button>
         </div>
       </div>
       </div>
