@@ -27,13 +27,13 @@ export default {
             });
         } else {
             this.sendNotification({
-               title: 'O projeto informado não existe',
-               message: 'Você será redirecionado(a) para a Página de Projetos',
-               type: 'warning',
+                title: 'O projeto informado não existe',
+                message: 'Você será redirecionado(a) para a Página de Projetos',
+                type: 'warning',
             });
-            
+
             setTimeout(() => {
-               this.$router.push({ name: 'ProjectList' });
+                this.$router.push({ name: 'ProjectList' });
             }, "3000");
         }
 
@@ -73,14 +73,14 @@ export default {
             input.value = `${this.project.contractLink}`;
             document.body.appendChild(input);
             input.select();
-   
+
             document.execCommand('copy');
             document.body.removeChild(input);
-   
+
             this.sendNotification({
-               title: 'Tudo certo!',
-               message: `Link copiado para a área de tranferência`,
-               type: 'success',
+                title: 'Tudo certo!',
+                message: `Link copiado para a área de tranferência`,
+                type: 'success',
             });
         },
 
@@ -89,14 +89,14 @@ export default {
             input.value = `${this.customer.email}`;
             document.body.appendChild(input);
             input.select();
-   
+
             document.execCommand('copy');
             document.body.removeChild(input);
-   
+
             this.sendNotification({
-               title: 'Tudo certo!',
-               message: `Link copiado para a área de tranferência`,
-               type: 'success',
+                title: 'Tudo certo!',
+                message: `Link copiado para a área de tranferência`,
+                type: 'success',
             });
         },
 

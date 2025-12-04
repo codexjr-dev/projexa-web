@@ -6,8 +6,8 @@
             <el-table-column prop="description" label="Descrição"></el-table-column>
             <el-table-column prop="team" label="Time" :formatter="formatList" :width="210">
                <template v-slot="scope">
-                  <div v-for="(member, index) in scope.row.team" :key="index">
-                     <div>{{ index + 1 }}) {{ member.name }}</div>
+                  <div v-for="(user, index) in scope.row.team" :key="index">
+                     <div>{{ index + 1 }}) {{ user.name }}</div>
                   </div>
                </template>
             </el-table-column>
@@ -188,7 +188,7 @@ export default {
       },
 
       getTeamMembersId(row) {
-         return row.team[0] && row.team[0].name ? row.team.map((member) => member._id) : row.team;
+         return row.team[0] && row.team[0].name ? row.team.map((user) => user._id) : row.team;
       },
 
       async handleViewProject(index, row) {

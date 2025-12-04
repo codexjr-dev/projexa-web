@@ -12,7 +12,7 @@ div.page
             stripe
          )
             el-table-column(
-               prop="member.name",
+               prop="user.name",
                label="Membro",
                :width="150"
             )

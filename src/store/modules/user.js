@@ -4,7 +4,7 @@ const actions = {
   async findAllUsers({ commit }) {
     const result = await axios({
       method: "GET",
-      url: "user",
+      url: "users",
     });
     return result.data;
   },
@@ -12,7 +12,7 @@ const actions = {
   async createUser({ commit }, user) {
     const result = await axios({
       method: "POST",
-      url: "user",
+      url: "users",
       data: user,
     });
     return result.data;
@@ -21,7 +21,7 @@ const actions = {
   async updateUser({ commit }, dados) {
     const result = await axios({
       method: "PATCH",
-      url: `user/${dados.id}`,
+      url: `users/${dados.id}`,
       data: dados.membro,
     });
     return result.data;
@@ -30,32 +30,38 @@ const actions = {
   async deleteUser({ commit }, id) {
     const result = await axios({
       method: "DELETE",
-      url: `user/${id}`,
+      url: `users/${id}`,
     });
     return result.data;
   },
 
   async userInfo() {
-    const token = localStorage.getItem("@jwt");
+    const id  = localStorage.getItem('@id');
+    const result = await axios({
+      method: 'GET',
+      url: `users/${id}`
+    });
+    return result.data;
+    // const token = localStorage.getItem("@jwt");
 
-    if (!token || !token.split(".")[1]) {
-      localStorage.clear();
-      return null;
-    }
+    // if (!token || !token.split(".")[1]) {
+    //   localStorage.clear();
+    //   return null;
+    // }
 
-    const base64Url = token.split(".")[1];
-    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-    const jsonPayload = decodeURIComponent(
-      window
-        .atob(base64)
-        .split("")
-        .map(function (c) {
-          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-        })
-        .join("")
-    );
+    // const base64Url = token.split(".")[1];
+    // const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    // const jsonPayload = decodeURIComponent(
+    //   window
+    //     .atob(base64)
+    //     .split("")
+    //     .map(function (c) {
+    //       return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+    //     })
+    //     .join("")
+    // );
 
-    return await JSON.parse(jsonPayload);
+    // return await JSON.parse(jsonPayload);
   },
 };
 

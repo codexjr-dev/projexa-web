@@ -54,13 +54,13 @@
                 <p class="baseText colTitle">Time</p>
                 <el-card class="externCol">
                     <el-scrollbar height="368px" style="margin-top: 1.1%;">
-                        <el-card v-for="member in project.team" class="projInfo">
+                        <el-card v-for="user in project.team" class="projInfo">
                             <div style="display: inline-flex;">
                                 <el-row>
                                     <el-icon class="userIcon"><UserFilled /></el-icon>
                                 </el-row>
                                 <div style="display: relative;">
-                                    <el-text class="baseText memberName"> {{ member.name }} </el-text>
+                                    <el-text class="baseText userName"> {{ user.name }} </el-text>
 
                                     <!-- Código para pegar a função do membro naquele projeto e atribuir
                                     como uma tag (ainda não há como selecionar a função de um membro em um
@@ -70,7 +70,7 @@
                                     a cor de fundo da tag -->
                                     <el-scrollbar style="margin-top: 2%; margin-left: 3%; height: 35px;">
                                         <div style="display: flex; width: 250px;">
-                                            <el-text v-for="role in member.projectRules" class="baseText tag" :class="role">
+                                            <el-text v-for="role in user.projectRules" class="baseText tag" :class="role">
                                                 {{ role }}
                                             </el-text>
                                         </div>

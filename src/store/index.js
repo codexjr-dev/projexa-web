@@ -18,12 +18,12 @@ const store = createStore({
     },
 
     title: "Vuex Store",
-    members: []
+    users: []
   },
 
   getters: {
-    allMembers(state) {
-      return state.members;
+    allUsers(state) {
+      return state.users;
     }
   },
 

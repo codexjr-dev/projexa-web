@@ -17,7 +17,7 @@ div.page
                :width="350"
             )
             el-table-column(
-               prop="member.name",
+               prop="user.name",
                label="Membro",
                :width="150"
             )

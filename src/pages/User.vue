@@ -31,7 +31,7 @@ div
             )
                div.actions()
                   div.actions-button(
-                     v-if="isLeadership || isThisMemberLoged(scope.row)"
+                     v-if="isLeadership || isThisUserLoged(scope.row)"
                      @click="handleEditar(scope.$index, scope.row)"
                      :style="'background: #4b53c6'"
                   )
@@ -56,7 +56,7 @@ div
       :before-close="closeModalWithoutRequest"
       :title="titleModal"
       @close="closeModal"
-      v-model="showAddMemberModal"
+      v-model="showAddUserModal"
    )
       adicionar-membro(
          :isVisualizar="isVisualizar"
@@ -95,7 +95,7 @@ import models from '@/constants/models'
 import { cloneDeep } from 'lodash'
 
 export default {
-   name: 'Member',
+   name: 'User',
 
    components: {
       AdicionarMembro,
@@ -110,7 +110,7 @@ export default {
 
       this.configHeader();
 
-      await this.getMembers();
+      await this.getUsers();
 
       this.sendNotification({
          title: 'Sucesso!',
@@ -133,17 +133,17 @@ export default {
          validPhone: false,
          invalid: false,
          dados: [],
-         novoMembro: cloneDeep(models.emptyMember),
+         novoMembro: cloneDeep(models.emptyUser),
          isEditar: false,
          isVisualizar: false,
-         titleModal: 'Adicionar Membro',
+         titleModal: 'Adicionar Usuário',
          errorEmailInUse: "",
       }
    },
 
    computed: {
-      showAddMemberModal() {
-         return this.$store.state.page.modalContext === 'ADD_OR_EDIT_MEMBER';
+      showAddUserModal() {
+         return this.$store.state.page.modalContext === 'ADD_OR_EDIT_USER';
       },
       isLeadership() {
          return ['Presidente', 'Diretor(a)', "Guardiã(o)"].includes(localStorage.getItem("@role"));
@@ -152,14 +152,14 @@ export default {
 
    methods: {
       ...mapActions({
-         findAllMembers: 'findAllMembers',
-         createMember: 'createMember',
-         updateMember: 'updateMember',
-         deleteMember: 'deleteMember'
+         findAllUsers: 'findAllUsers',
+         createUser: 'createUser',
+         updateUser: 'updateUser',
+         deleteUser: 'deleteUser'
       }),
 
       configHeader() {
-         this.$store.commit('SET_PAGE_CONTEXT', 'member');
+         this.$store.commit('SET_PAGE_CONTEXT', 'user');
          this.$store.commit('SET_HEADER_TITLE', 'Membros');
          this.$store.commit('SET_HEADER_BUTTON_VISIBILITY', true);
          this.$store.commit('SHOW_SIDEBAR', true);
@@ -169,15 +169,15 @@ export default {
          return Utils.formatDate(prop);
       },
 
-      async getMembers() {
-         const res = await this.findAllMembers();
+      async getUsers() {
+         const res = await this.findAllUsers();
          res.status === 404 ?
             localStorage.clear() || this.$router.push({ name: 'Home' })
-            : this.dados = res.members;
+            : this.dados = res.users;
       },
 
-      isThisMemberLoged(member) {
-         return member.loged;
+      isThisUserLoged(user) {
+         return user.loged;
       },
 
       setValid(value) {
@@ -234,14 +234,14 @@ export default {
       },
 
       handleEditar(index, row) {
-         this.openModal(index, row, 'ADD_OR_EDIT_MEMBER');
+         this.openModal(index, row, 'ADD_OR_EDIT_USER');
          this.isVisualizar = false;
          this.isEditar = true;
          this.titleModal = 'Editar Membro';
       },
 
       handleVisualizar(index, row) {
-         this.openModal(index, row, 'ADD_OR_EDIT_MEMBER');
+         this.openModal(index, row, 'ADD_OR_EDIT_USER');
          this.isVisualizar = true;
          this.isEditar = false;
          this.titleModal = row.name;
@@ -249,7 +249,7 @@ export default {
 
       handleExcluir(index, row) {
          ElMessageBox.confirm(
-            `Excluir membro ${row.name} do sistema?`,
+            `Excluir usuário ${row.name} do sistema?`,
             'Atenção',
             {
                confirmButtonText: 'Excluir',
@@ -264,11 +264,11 @@ export default {
       async salvar() {
          try {
             if (this.setValidation()) {
-               const res = await this.createMember(this.novoMembro)
+               const res = await this.createUser(this.novoMembro)
 
                this.sendNotification({
                   title: 'Tudo certo!',
-                  message: `${res.member.name} foi cadastrado com sucesso`,
+                  message: `${res.user.name} foi cadastrado com sucesso`,
                   type: 'success',
                });
 
@@ -285,11 +285,11 @@ export default {
 
       async editar() {
          try {
-            const res = await this.updateMember({ membro: this.novoMembro, id: this.novoMembro._id });
+            const res = await this.updateUser({ membro: this.novoMembro, id: this.novoMembro._id });
 
             this.sendNotification({
                title: 'Tudo certo!',
-               message: `${res.member.name} foi editado com sucesso`,
+               message: `${res.user.name} foi editado com sucesso`,
                type: 'success',
             });
 
@@ -299,7 +299,7 @@ export default {
 
       async excluir(index, row) {
          try {
-            await this.deleteMember(row._id)
+            await this.deleteUser(row._id)
 
             this.sendNotification({
                title: 'Tudo certo!',
@@ -307,7 +307,7 @@ export default {
                type: 'success',
             });
 
-            await this.getMembers()
+            await this.getUsers()
          } catch (error) {
             this.sendNotification({
                title: 'Falha ao remover membro!',
@@ -315,7 +315,7 @@ export default {
                type: 'error',
             });
 
-            await this.getMembers()
+            await this.getUsers()
          }
       },
 
@@ -326,14 +326,14 @@ export default {
 
       async closeModal() {
          this.closeModalWithoutRequest();
-         await this.getMembers();
+         await this.getUsers();
       },
 
       closeModalWithoutRequest() {
          this.isVisualizar = false;
          this.isEditar = false;
          this.titleModal = 'Adicionar Membro';
-         this.novoMembro = cloneDeep(models.emptyMember);
+         this.novoMembro = cloneDeep(models.emptyUser);
          this.$store.commit('SET_AND_SHOW_MODAL_CONTEXT', '');
       },
 

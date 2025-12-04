@@ -110,10 +110,10 @@ div.modal-content
             :fit-input-width="true"
          )
             el-option(
-               v-for="member in members",
-               :key="member._id",
-               :label="member.name",
-               :value="member._id"
+               v-for="user in users",
+               :key="user._id",
+               :label="user.name",
+               :value="user._id"
             )
          el-text.verify(
             v-if="this.errorMessages['projectTeam']"
@@ -259,18 +259,18 @@ export default {
                value: 'Treinamento',
             }
          ],
-         members: []
+         users: []
       }
    },
 
    async mounted() {
-      const res = await this.findAllMembers()
-      this.members = res.members
+      const res = await this.findAllUsers()
+      this.users = res.users
    },
 
    methods: {
       ...mapActions({
-         findAllMembers: 'findAllMembers',
+         findAllUsers: 'findAllUsers',
          findById: 'findById',
       }),
 

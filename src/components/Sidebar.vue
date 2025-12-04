@@ -3,12 +3,12 @@ div.sidebar
    div.user-info
       span(v-html="userData")
    div.sidebar-button(
-      :style="isMember ? 'background: #4b53c6' : 'background: #e6e6e6'"
-      @click="handleOption('member')"
+      :style="isUser ? 'background: #4b53c6' : 'background: #e6e6e6'"
+      @click="handleOption('user')"
    )
       el-icon
-         user-filled(:style="isMember ? 'color: white' : 'color: #808080'")
-      span(v-if="!isMember") Membros
+         user-filled(:style="isUser ? 'color: white' : 'color: #808080'")
+      span(v-if="!isUser") Membros
    div.sidebar-button(
       :style="isProject ? 'background: #4b53c6' : 'background: #e6e6e6'"
       @click="handleOption('project')"
@@ -60,8 +60,8 @@ export default {
    },
 
    computed: {
-      isMember() {
-         return this.$store.state.page.context === 'member'
+      isUser() {
+         return this.$store.state.page.context === 'user'
       },
       isProject() {
          return this.$store.state.page.context === 'project'
@@ -91,8 +91,8 @@ export default {
 
       handleOption(context) {
          this.$store.commit('SET_PAGE_CONTEXT', context);
-         if (this.isMember) {
-            this.$router.push({ name: 'Member' })
+         if (this.isUser) {
+            this.$router.push({ name: 'User' })
          } else if (this.isProject) {
             this.$router.push({ name: 'ProjectList' })
          } else if (this.isLink) {
