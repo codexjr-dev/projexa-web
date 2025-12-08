@@ -54,6 +54,11 @@ div.page
                 el-icon
                   DeleteFilled()
 
+    el-card
+      h3 Gráfico Financeiro
+      div.chart-wrapper
+        OrganizationChart(:labels="chartLabels" :datasets="chartDatasets")
+
   el-dialog(
     center
     :before-close="closeModalWithoutRequest"
@@ -75,17 +80,67 @@ div.page
 
 <script>
 import scriptModule from './OrganizationManagement.js';
+import OrganizationChart from '@/components/OrganizationChart.vue'
 
 export default {
   name: scriptModule.name,
-  components: scriptModule.components,
-  mounted: scriptModule.mounted,
-  data: scriptModule.data,
+  components: { ...scriptModule.components, OrganizationChart },
+  
+  data() {
+    return {
+      ...scriptModule.data(),
+      chartLabels: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+      chartDatasets: [
+        {
+          label: 'Valor em caixa',
+          data: scriptModule.data().valorEmCaixa,
+        borderColor: '#4B53C6',
+        backgroundColor: 'rgba(75,83,198,0.2)',
+        tension: 0.3 
+        },
+        {
+        label: 'Despesas',
+        data: scriptModule.data().despesas,
+        borderColor: '#d12a2aff',
+        backgroundColor: 'rgba(248,152,152,0.2)',
+        tension: 0.3
+      },
+      {
+        label: 'Entrada',
+        data: scriptModule.data().entradas,
+        borderColor: '#137267ff',
+        backgroundColor: 'rgba(117,212,201,0.2)',
+        tension: 0.3
+        }
+      ]
+    }
+  },
+
+  mounted() {
+    scriptModule.mounted?.call(this)
+    
+  },
+
   computed: scriptModule.computed,
-  methods: scriptModule.methods
+
+  methods: {
+    ...scriptModule.methods
+    
+  },
+
+  watch: {
+    
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import './OrganizationManagement.scss';
+
+.chart-wrapper {
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  margin: 20px auto;
+}
 </style>
