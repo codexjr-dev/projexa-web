@@ -30,6 +30,15 @@ div.sidebar
       el-icon
          list(:style="isAllNews ? 'color: white' : 'color: #808080'")
       span(v-if="!isAllNews") Atualizações
+
+   div.sidebar-button(
+      :style="isOrganization ? 'background: #4b53c6' : 'background: #e6e6e6'"
+      @click="handleOption('organization')"
+   )
+      el-icon
+         files(:style="isOrganization ? 'color: white' : 'color: #808080'")
+      span(v-if="!isOrganization") Organização
+
    div.sidebar-button(
       v-if="isLeadership"
       :style="isSettings ? 'background: #4b53c6' : 'background: #e6e6e6'"
@@ -75,6 +84,9 @@ export default {
       isAllNews() {
          return this.$store.state.page.context === 'allnews'
       },
+      isOrganization() {
+         return this.$store.state.page.context === 'organization'
+      },
       isLeadership() {
          return ['Presidente', 'Diretor(a)', "Guardiã(o)"].includes(localStorage.getItem("@role"))
       }
@@ -101,6 +113,8 @@ export default {
             this.$router.push({ name: 'Settings' })
          } else if (this.isAllNews) {
             this.$router.push({ name: 'AllNews' })
+         } else if (this.isOrganization) {
+            this.$router.push({ name: 'OrganizationManagement' })
          }
       },
 
