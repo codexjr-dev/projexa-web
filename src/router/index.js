@@ -3,12 +3,17 @@ import Home from '../pages/Home/Home.vue'
 import Cadastro from '../pages/Cadastro.vue'
 import Login from '../pages/Login.vue'
 import user from '../pages/User.vue'
+import Home from '../pages/Home.vue'
+import Cadastro from '../pages/Cadastro/Cadastro.vue'
+import Login from '../pages/Login.vue'
+import Member from '../pages/Member/Member.vue'
 import ProjectList from '../pages/ProjectList.vue'
 import Project from '../pages/Project/Project.vue'
 import AllNews from '../pages/AllNews/AllNews.vue'
 import ViewNews from '../pages/ViewNews/ViewNews.vue'
-import Link from '../pages/Link.vue'
+import Link from '../pages/Link/Link.vue'
 import Settings from '../pages/Settings.vue'
+import Management from '../pages/PeopleManagement/Management.vue'
 
 const isUsuarioAutenticado = () => {
     return !!localStorage.getItem('@jwt')
@@ -47,7 +52,7 @@ const routes = [
         path: '/projetos',
         component: ProjectList,
         meta: {
-            requiresAuth: true
+            requiresAuth: false
         }
     },
     {
@@ -90,7 +95,16 @@ const routes = [
             requiresAuth: true,
             requiresPresidentRole: true
         }
-    }
+    },
+    {
+        path: '/management',
+        name: 'Management',
+        component: Management,
+        meta: {
+            requiresAuth: false,
+            requiresPresidentRole: false
+        }
+    }  
 ]
 
 const noAuthRoutes = ['/cadastrar', '/entrar', '/']

@@ -3,7 +3,6 @@ import auth from './auth'
 import member from './member'
 import project from './project'
 import link from './link'
-import user from './user'
 import news from './news'
 
 const actions = {
@@ -12,7 +11,6 @@ const actions = {
     ...member.actions,
     ...project.actions,
     ...link.actions,
-    ...user.actions,
     ...news.actions
 }
 

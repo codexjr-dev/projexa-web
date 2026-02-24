@@ -5,7 +5,7 @@ const actions = {
         const result = await axios({
             method: 'POST',
             data: dados,
-            url: 'signIn'
+            url: 'sign-in'
         })
         return result.data
     }

@@ -5,6 +5,10 @@ div.sidebar
    div.sidebar-button(
       :style="isUser ? 'background: #4b53c6' : 'background: #e6e6e6'"
       @click="handleOption('user')"
+      :style="isMember ? 'background: #4b53c6' : 'background: #e6e6e6'"
+      @click="handleOption('member')"
+      title="Membros"
+      aria-label="Membros"
    )
       el-icon
          user-filled(:style="isUser ? 'color: white' : 'color: #808080'")
@@ -12,6 +16,8 @@ div.sidebar
    div.sidebar-button(
       :style="isProject ? 'background: #4b53c6' : 'background: #e6e6e6'"
       @click="handleOption('project')"
+      title="Projetos"
+      aria-label="Projetos"
    )
       el-icon
          files(:style="isProject ? 'color: white' : 'color: #808080'")
@@ -19,6 +25,8 @@ div.sidebar
    div.sidebar-button(
       :style="isLink ? 'background: #4b53c6' : 'background: #e6e6e6'"
       @click="handleOption('link')"
+      title="Links"
+      aria-label="Links"
    )
       el-icon
          connection(:style="isLink ? 'color: white' : 'color: #808080'")
@@ -26,20 +34,35 @@ div.sidebar
    div.sidebar-button(
       :style="isAllNews ? 'background: #4b53c6' : 'background: #e6e6e6'"
       @click="handleOption('allnews')"
+      title="Atualizações"
+      aria-label="Atualizações"
    )
       el-icon
          list(:style="isAllNews ? 'color: white' : 'color: #808080'")
       span(v-if="!isAllNews") Atualizações
    div.sidebar-button(
+      :style="isForm ? 'background: #4b53c6' : 'background: #e6e6e6'"
+      @click="handleOption('forms')"
+      title="Formulários"
+      aria-label="Formulários"
+   )
+      el-icon
+         document(:style="isForm ? 'color: white' : 'color: #808080'")
+      span(v-if="!isForm") Formulários
+   div.sidebar-button(
       v-if="isLeadership"
       :style="isSettings ? 'background: #4b53c6' : 'background: #e6e6e6'"
       @click="handleNotifyUnderDevelopment('settings')"
+      title="Configurações"
+      aria-label="Configurações"
    )
       el-icon
          setting(:style="isSettings ? 'color: white' : 'color: #808080'")
       span(v-if="!isSettings") Configurações
    div.sidebar-button#logoff-button(
       @click="logoff"
+      title="Sair"
+      aria-label="Sair"
    )
       el-icon
          SwitchButton#logoff-icon()
@@ -75,6 +98,9 @@ export default {
       isAllNews() {
          return this.$store.state.page.context === 'allnews'
       },
+      isForm() {
+         return this.$store.state.page.context === 'management'
+      },
       isLeadership() {
          return ['Presidente', 'Diretor(a)', "Guardiã(o)"].includes(localStorage.getItem("@role"))
       }
@@ -101,6 +127,19 @@ export default {
             this.$router.push({ name: 'Settings' })
          } else if (this.isAllNews) {
             this.$router.push({ name: 'AllNews' })
+         
+         const routes = {
+            member: 'Member',
+            project: 'ProjectList',
+            link: 'Link',
+            settings: 'Settings',
+            allnews: 'AllNews',
+            form: 'Management',
+            forms: 'Management' // Adicione a rota correspondente aqui
+         };
+         
+         if (routes[context]) {
+            this.$router.push({ name: routes[context] });
          }
       },
 
