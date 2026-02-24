@@ -230,7 +230,7 @@ export default {
       },
 
       getTeamMembersId(row) {
-         return row.team[0] && row.team[0].name ? row.team.map((member) => member._id) : row.team;
+         return row.team[0] && row.team[0].name ? row.team.map((user) => user._id) : row.team;
       },
 
       async getProjetos() {

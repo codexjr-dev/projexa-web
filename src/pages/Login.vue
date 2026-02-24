@@ -54,6 +54,31 @@ export default {
         type: "warning",
       });
 
+         if (this.validarCampos()) {
+            try {
+               const res = await this.login(this.dados)
+               localStorage.setItem('@jwt', res.dados.token)
+               localStorage.setItem('@id', res.dados.user._id)
+               localStorage.setItem('@role', res.dados.user.role)
+               this.$store.commit('SHOW_SIDEBAR', true)
+               this.$router.push({ name: 'User' })
+               ElNotification.closeAll();
+               ElNotification({
+                  title: 'Sucesso!',
+                  message: 'Login efetuado.',
+                  type: 'success',
+               });
+            } catch (error) {
+               ElNotification.closeAll();
+               ElNotification({
+                  title: 'Ops!',
+                  message: 'Usuário ou senha incorretos',
+                  type: 'error',
+               })
+               console.error(error.message)
+            }
+         }
+      },
       if (this.validarCampos()) {
         try {
           const res = await this.login(this.dados);

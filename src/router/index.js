@@ -1,4 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../pages/Home/Home.vue'
+import Cadastro from '../pages/Cadastro.vue'
+import Login from '../pages/Login.vue'
+import user from '../pages/User.vue'
 import Home from '../pages/Home.vue'
 import Cadastro from '../pages/Cadastro/Cadastro.vue'
 import Login from '../pages/Login.vue'
@@ -20,14 +24,14 @@ const isPresident = () => {
 }
 
 const routes = [
-    {
-        name: 'Home',
-        path: '/',
-        component: Home
-    },
+//     {
+//         name: 'Home',
+//         path: '/',
+//         component: Home
+//     },
     {
         name: 'Login',
-        path: '/entrar',
+        path: '/',
         component: Login
     },
     {
@@ -36,9 +40,9 @@ const routes = [
         component: Cadastro
     },
     {
-        name: 'Member',
-        path: '/membros',
-        component: Member,
+        name: 'User',
+        path: '/users',
+        component: user,
         meta: {
             requiresAuth: true
         }
@@ -60,20 +64,20 @@ const routes = [
         }
     },
     {
-      name: 'AllNews',
-      path: '/allnews',
-      component: AllNews,
-      meta: {
-          requiresAuth: true
-      }
+        name: 'AllNews',
+        path: '/allnews',
+        component: AllNews,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
-      name: 'ViewNews',
-      path: '/project/:projectId/news',
-      component: ViewNews,
-      meta: {
-          requiresAuth: true
-      }
+        name: 'ViewNews',
+        path: '/project/:projectId/news',
+        component: ViewNews,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         name: 'Link',
@@ -113,7 +117,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     if (from.path === '/' && noAuthRoutes.includes(to.path)) {
         if (isUsuarioAutenticado()) {
-            next({ name: 'Member' })
+            next({ name: 'User' })
         } else {
             next()
         }
@@ -121,15 +125,10 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // this route requires auth, check if logged in
         // if not, redirect to login page.
-        if (!isUsuarioAutenticado()) {
-            next({ name: 'Login' })
-        } else {
+        if (isUsuarioAutenticado()) {
             if (to.matched.some(record => record.meta.requiresPresidentRole)) {
-                if (!isPresident()) {
-                    next({ name: 'Member' })
-                } else {
-                    next()
-                }
+                if (!isPresident()) next({ name: 'User' })
+                else next();
             } else {
                 next() // go to wherever I'm going
             }

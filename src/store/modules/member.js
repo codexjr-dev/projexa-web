@@ -5,7 +5,7 @@ const actions = {
     try {
       const result = await axios({
         method: "GET",
-        url: "member",
+        url: "user",
       });
       return result.data;
     } catch (err) {
@@ -19,11 +19,11 @@ const actions = {
     }
   },
 
-  async createMember({ commit }, member) {
+  async createMember({ commit }, user) {
     const result = await axios({
       method: "POST",
-      url: "member",
-      data: member,
+      url: "user",
+      data: user,
     });
     return result.data;
   },
@@ -31,7 +31,7 @@ const actions = {
   async updateMember({ commit }, dados) {
     const result = await axios({
       method: "PATCH",
-      url: `member/${dados.id}`,
+      url: `user/${dados.id}`,
       data: dados.membro,
     });
     return result.data;
@@ -40,7 +40,7 @@ const actions = {
   async deleteMember({ commit }, id) {
     const result = await axios({
       method: "DELETE",
-      url: `member/${id}`,
+      url: `user/${id}`,
     });
     return result.data;
   },

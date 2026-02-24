@@ -1,9 +1,9 @@
 <template lang="pug">
 div.cadastro-page
    div.cadastro-form
-      span.page-title Cadastre sua EJ
+      span.page-title Cadastre sua organização
       el-input(
-         placeholder="digite o nome da ej"
+         placeholder="digite o nome da organização"
          v-model="cadastroData.name"
       )
       el-input(
@@ -62,7 +62,7 @@ export default {
 
    methods: {
       ...mapActions({
-         createEj: 'createEj',
+         createOrganization: 'createOrganization',
       }),
 
       async save() {
@@ -74,7 +74,7 @@ export default {
          });
 
          try {
-            await this.createEj(this.cadastroData)
+            await this.createOrganization(this.cadastroData)
             ElNotification.closeAll();
             ElNotification({
                title: 'Sucesso',

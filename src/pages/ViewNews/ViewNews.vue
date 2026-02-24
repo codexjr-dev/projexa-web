@@ -12,7 +12,7 @@ div.page
             stripe
          )
             el-table-column(
-               prop="member.name",
+               prop="user.name",
                label="Membro",
                :width="150"
             )
@@ -81,7 +81,7 @@ div.page
                color="#4b53c6"
             ) Salvar
 </template>
-   
+
 <script>
 import scriptModule from './ViewNews.js';
 
@@ -94,8 +94,7 @@ export default {
    methods: scriptModule.methods
 }
 </script>
-   
+
 <style lang="scss" scoped>
-@import './ViewNews.scss';
+@use './ViewNews.scss';
 </style>
-   

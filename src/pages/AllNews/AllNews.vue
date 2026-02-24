@@ -17,7 +17,7 @@ div.page
                :width="350"
             )
             el-table-column(
-               prop="member.name",
+               prop="user.name",
                label="Membro",
                :width="150"
             )
@@ -89,7 +89,7 @@ import scriptModule from './AllNews.js';
 export default {
    name: scriptModule.name,
    components: scriptModule.components,
-   mounted: scriptModule.mounted,
+   mounted: scriptModule.mounted, 
    data: scriptModule.data,
    computed: scriptModule.computed,
    methods: scriptModule.methods
@@ -97,6 +97,6 @@ export default {
 </script>
       
 <style lang="scss" scoped>
-@import './AllNews.scss';
+@use './AllNews.scss';
 </style>
       

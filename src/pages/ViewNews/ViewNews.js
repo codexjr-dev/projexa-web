@@ -79,7 +79,7 @@ export default {
       },
 
       isNewsOwner(row) {
-         return this.userInfo.sub._id === row.member._id;
+         return this.userInfo.sub._id === row.user._id;
       },
 
       async getNews() {
@@ -141,7 +141,7 @@ export default {
       handleDeleteNews(index, row) {
          ElMessageBox.confirm(
             `<b>Excluir atualização do sistema?</b><br><br>
-            <b>Autor(a):</b> ${row.member.name}<br>
+            <b>Autor(a):</b> ${row.user.name}<br>
             <b>Última atualização:</b> ${Utils.formatDate(row.updatedAt)}<br>
             <b>Descrição:</b> ${row.description}<br>
             <b>Link de Referência:</b> ${row.updateLink ? row.updateLink : 'Sem link.'}<br>

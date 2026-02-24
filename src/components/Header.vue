@@ -18,8 +18,8 @@ export default {
    props: {},
 
    computed: {
-      isMember() {
-         return this.$store.state.page.context === 'member'
+      isUser() {
+         return this.$store.state.page.context === 'user'
       },
       isProject() {
          return this.$store.state.page.context === 'project'
@@ -44,7 +44,7 @@ export default {
       },
 
       textButton() {
-         if (this.isMember) {
+         if (this.isUser) {
             return 'Adicionar membro'
          } else if (this.isProject) {
             return 'Adicionar projeto'
@@ -56,8 +56,8 @@ export default {
 
    methods: {
       openModal() {
-         if (this.isMember) {
-            this.$store.commit('SET_AND_SHOW_MODAL_CONTEXT', 'ADD_OR_EDIT_MEMBER')
+         if (this.isUser) {
+            this.$store.commit('SET_AND_SHOW_MODAL_CONTEXT', 'ADD_OR_EDIT_USER')
          } else if (this.isProject) {
             this.$store.commit('SET_AND_SHOW_MODAL_CONTEXT', 'ADD_OR_EDIT_PROJECT')
          } else if (this.isLink) {
